@@ -1,0 +1,19 @@
+version: '2.1'
+services:
+  # SERVER #
+  server:
+    build:
+      context: .
+      dockerfile: ./server/Dockerfile
+    ports:
+      - "5000:5000"
+    restart: always
+  # CLIENT #
+  client:
+    build:
+      context: .
+      dockerfile: ./client/Dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - server
